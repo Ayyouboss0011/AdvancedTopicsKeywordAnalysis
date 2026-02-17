@@ -97,9 +97,5 @@ Die wichtigsten verwendeten Bibliotheken sind:
 
 ---
 
-## 📝 Lizenz
 
-Dieses Projekt ist unter der MIT-Lizenz lizenziert. Weitere Details finden Sie in der [LICENSE](LICENSE) Datei (falls vorhanden).
 
----
-*Erstellt für DanielKeywordStatistics – Optimieren Sie Ihre SEO-Strategie datenbasiert!*
