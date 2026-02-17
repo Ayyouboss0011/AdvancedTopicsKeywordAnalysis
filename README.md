@@ -87,6 +87,36 @@ Das Herzstück der Analyse ist das Jupyter Notebook. So starten Sie es:
 
 ---
 
+## 🔍 Code-Erklärung (Deep Dive)
+
+Das Tool ist in verschiedene logische Phasen unterteilt, die nacheinander ablaufen:
+
+### 1. Daten-Extraktion (`fetch_data`)
+Die Funktion nutzt die `requests`-Bibliothek mit einem benutzerdefinierten User-Agent, um die Webseite abzurufen. `BeautifulSoup` parst anschließend das HTML und ermöglicht den Zugriff auf SEO-relevante Tags wie `<title>`, `<h1>`, `<h2>`, `<h3>`, `<a>` (Links) und `<img>` (Bilder).
+
+### 2. Text-Bereinigung (`get_clean_text`)
+Um die Relevanz zu erhöhen, wird der Text transformiert:
+- **Bereinigung:** Entfernung von Script- und Style-Tags.
+- **Normalisierung:** Umwandlung in Kleinschreibung und Extraktion von Wörtern (Regex `[a-zäöüß]+`).
+- **Stopword-Filtering:** Wörter wie "und", "der" oder "the" werden basierend auf der gewählten Sprache (`nltk.corpus.stopwords`) entfernt.
+
+### 3. SEO-Gewichtung & Scoring (`calculate_seo_scores`)
+Dies ist das Herzstück der Analyse. Ein Keyword erhält nicht nur Punkte für die Häufigkeit, sondern auch einen **Boost** basierend auf seiner Position:
+- **Basis-Score:** Jedes Vorkommen zählt 1.0 Punkt.
+- **Titel-Boost (5.0x):** Keywords im HTML-Titel werden mit dem Faktor 5 multipliziert.
+- **H1-Boost (3.0x):** Keywords in der Hauptüberschrift erhalten den Faktor 3.
+Am Ende werden die Top 15 Keywords nach ihrem finalen Score sortiert.
+
+### 4. Long-Tail Keyword Extraction (RAKE)
+Der **RAKE-Algorithmus** (Rapid Automatic Keyword Extraction) analysiert Wort-Kookkurrenzen im Volltext. Er identifiziert Wortgruppen (Phrasen), die häufig zusammen auftreten, und bewertet sie. Das Tool zeigt gezielt Phrasen mit mehr als einem Wort an, um spezifische Suchbegriffe zu finden.
+
+### 5. Visualisierung
+- **Struktur-Plot:** Ein Barplot zeigt die Verteilung der HTML-Tags.
+- **Bereinigungs-Plot:** Veranschaulicht die Reduktion der Datenmenge durch den Stopword-Filter.
+- **Keyword-Plot:** Visualisiert die 15 stärksten Keywords nach ihrem SEO-Score.
+
+---
+
 ## 📦 Abhängigkeiten
 
 Die wichtigsten verwendeten Bibliotheken sind:
