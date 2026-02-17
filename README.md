@@ -44,11 +44,13 @@ source venv/bin/activate
 
 ### 3. Abhängigkeiten installieren
 
-Installieren Sie alle benötigten Python-Bibliotheken:
+Installieren Sie alle benötigten Python-Bibliotheken (einschließlich Jupyter):
 
 ```bash
 pip install -r requirements.txt
 ```
+
+*(Hinweis: Falls Jupyter nicht in der requirements.txt enthalten ist, führen Sie zusätzlich `pip install jupyter` aus.)*
 
 ---
 
@@ -94,8 +96,4 @@ Die wichtigsten verwendeten Bibliotheken sind:
 - `rake-nltk` & `nltk` (NLP / Keyword-Extraktion)
 - `scikit-learn` (TF-IDF Analyse)
 - `ipywidgets` (Interaktive Elemente)
-
----
-
-
 
