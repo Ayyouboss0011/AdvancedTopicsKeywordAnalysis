@@ -7,5 +7,7 @@ rake-nltk
 nlp_rake
 nltk
 ipywidgets
+jupyter
+notebook
 matplotlib
 seaborn
