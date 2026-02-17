@@ -1,0 +1,11 @@
+requests
+beautifulsoup4
+pandas
+numpy
+scikit-learn
+rake-nltk
+nlp_rake
+nltk
+ipywidgets
+matplotlib
+seaborn
